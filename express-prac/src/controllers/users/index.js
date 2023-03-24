@@ -48,6 +48,10 @@ class UserController {
 	createUser(req, res, next) {
 		try {
 			const { name, age } = req.body;
+			if (!name) {
+				throw { status: 400, message: "이름이 없습니다."}
+			}
+
 			this.users.push({
 				id: new Date().getTime(),
 				name,
