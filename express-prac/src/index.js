@@ -1,12 +1,7 @@
-import express, {Router} from "express"
+import express from "express"
 import cors from "cors";
 import helmet from "helmet";
-import dayjs from "dayjs";
-import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
-//import UserController from './users'
 import Controllers from "./controllers";
-
 
 const app = express()
 
@@ -16,7 +11,6 @@ app.use(express.json()) // JSON 처리
 app.use(cors({origin:"*"}));
 app.use(helmet());
 
-// app.use('/users', UserController.router);
 Controllers.forEach((controller) => {
 	app.use(controller.path, controller.router)
 })
@@ -25,6 +19,12 @@ Controllers.forEach((controller) => {
 // res : 응답 -> Response
 app.get("/", (req, res) => {
 	res.send('NodeJS')
+})
+
+app.use((err, req, res, next) => {
+	console.log(err);
+
+	res.status(err.status|| 500).json({message: err.message || "서버에서 에러가 발생했습니다." })
 })
 
 app.listen(8000, () => {
