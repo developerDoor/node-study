@@ -2,7 +2,8 @@ import express from "express"
 import cors from "cors";
 import helmet from "helmet";
 import Controllers from "./controllers";
-
+import { swaggerDocs, options } from "./swagger";
+import swaggerUi from "swagger-ui-express";
 const app = express()
 
 // 어플리케이션 레벨 미들웨어
@@ -14,6 +15,11 @@ app.use(helmet());
 Controllers.forEach((controller) => {
 	app.use(controller.path, controller.router)
 })
+
+app.get("/swagger.json", (req, res) => {
+	res.status(200).json(swaggerDocs);
+});
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(undefined, options));
 
 // req : 요청 -> Request
 // res : 응답 -> Response
