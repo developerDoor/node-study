@@ -4,6 +4,8 @@ import helmet from "helmet";
 import Controllers from "./controllers";
 import { swaggerDocs, options } from "./swagger";
 import swaggerUi from "swagger-ui-express";
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express()
 
 // 어플리케이션 레벨 미들웨어
