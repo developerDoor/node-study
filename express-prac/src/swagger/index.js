@@ -1,5 +1,9 @@
-import * as Swaggers from "../controllers/swagger"
+import * as UserSwagger from "../users/swagger"
 import defaultSwagger from "./defaultSwagger";
+
+const Swaggers = {
+	UserSwagger,
+};
 
 // 1. 가공하는 코드
 const { paths } = Object.values(Swaggers).reduce(
@@ -9,7 +13,6 @@ const { paths } = Object.values(Swaggers).reduce(
 		})
 		APIs.forEach((api) => {
 			const key = Object.keys(api)[0];
-			console.log(key)
 			if (!acc.paths[key]) {
 				acc.paths = {
 					...acc.paths,
@@ -22,7 +25,7 @@ const { paths } = Object.values(Swaggers).reduce(
 				}
 			}
 		})
-		console.log(acc)
+		//console.log(acc)
 		return acc
 	}, { paths: {}})
 // 2. 스워거에 등록할 JSON 만들기 defaultSwagger + 1에서 가공한 paths
