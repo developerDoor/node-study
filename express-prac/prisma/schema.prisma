@@ -14,10 +14,12 @@ model User {
   id String @id @default(uuid())
 
   name        String @db.VarChar(200)
-  email       String @db.VarChar(200)
+  email       String @unique @db.VarChar(200)
   phoneNumber String @db.Char(11)
   age         Int
-  posts       Post[]
+  password    String
+
+  posts Post[]
 }
 
 model Post {

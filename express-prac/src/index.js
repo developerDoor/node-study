@@ -5,8 +5,6 @@ import Controllers from "./controllers";
 import { swaggerDocs, options } from "./swagger";
 import swaggerUi from "swagger-ui-express";
 import database from "./database";
-import dotenv from 'dotenv';
-dotenv.config();
 
 // 즉시 실행함수
 (async ()=> {
