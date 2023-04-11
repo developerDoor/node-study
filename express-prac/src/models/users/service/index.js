@@ -16,8 +16,6 @@ export class UserService {
 		return user;
 	}
 
-
-
 	async findUserById(id) {
 		const user = await database.user.findUnique({
 			where: {

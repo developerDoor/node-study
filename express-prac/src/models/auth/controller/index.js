@@ -14,8 +14,9 @@ class AuthController {
 	}
 
 	init() {
-		this.router.post('/register', this.register.bind(this))
-		this.router.post('/login', this.login.bind(this))
+		this.router.post('/register', this.register.bind(this));
+		this.router.post('/login', this.login.bind(this));
+		this.router.post('/refresh', this.refresh.bind(this));
 	}
 
 	async register(req, res, next) {
@@ -45,6 +46,20 @@ class AuthController {
 				refreshToken
 			})
 		} catch (eer) {
+			next(err)
+		}
+	}
+
+	async refresh(req, res, next) {
+		try {
+			const body = req.body
+			const { accessToken, refreshToken } = await this.authService.refresh(body.accessToken, body.refreshToken)
+
+			return res.status(200).json({
+				accessToken,
+				refreshToken
+			})
+		} catch (err) {
 			next(err)
 		}
 	}
