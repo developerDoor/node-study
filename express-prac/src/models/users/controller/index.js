@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { UsersDto, CreateUserDto, UpdateUserDto } from "../dto";
 import { UserService } from "../service";
-import {pagination} from "../../middleware/pagination";
+import {pagination} from "../../../middleware/pagination";
 
 // Router
 class UserController {

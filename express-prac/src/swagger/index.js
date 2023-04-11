@@ -1,9 +1,5 @@
-import * as UserSwagger from "../users/swagger"
 import defaultSwagger from "./defaultSwagger";
-
-const Swaggers = {
-	UserSwagger,
-};
+import { Swaggers } from "../models";
 
 // 1. 가공하는 코드
 const { paths } = Object.values(Swaggers).reduce(

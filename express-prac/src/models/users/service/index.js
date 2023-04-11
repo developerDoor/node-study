@@ -1,4 +1,4 @@
-import database from "../../database";
+import database from "../../../database";
 
 export class UserService {
 	// findById, findMany, create, update, delete
@@ -12,7 +12,8 @@ export class UserService {
 
 		if(!user) return false;
 
-		return true;
+		// 유저가 존재하면 유저 정보를 반환한다.
+		return user;
 	}
 
 

@@ -1,10 +1,11 @@
 import express from "express"
 import cors from "cors";
 import helmet from "helmet";
-import Controllers from "./controllers";
+import {Controllers} from "./models";
 import { swaggerDocs, options } from "./swagger";
 import swaggerUi from "swagger-ui-express";
 import database from "./database";
+import {jwtAuth} from "./middleware";
 
 // 즉시 실행함수
 (async ()=> {
@@ -16,6 +17,7 @@ import database from "./database";
 	app.use(express.json()) // JSON 처리
 	app.use(cors({origin:"*"}));
 	app.use(helmet());
+	app.use(jwtAuth);
 
 	Controllers.forEach((controller) => {
 		app.use(controller.path, controller.router)
