@@ -13,10 +13,11 @@ datasource db {
 model User {
   id String @id @default(uuid())
 
-  name        String @db.VarChar(200)
-  email       String @unique @db.VarChar(200)
-  phoneNumber String @db.Char(11)
+  name        String  @db.VarChar(200)
+  email       String  @unique @db.VarChar(200)
+  phoneNumber String  @db.Char(11)
   password    String
+  description String? @db.VarChar(300)
 
   posts     Post[]
   postLikes PostLike[]
