@@ -9,8 +9,8 @@ export const jwtAuth = async (req, res, next) => {
 		const authorization = headers["Authorization"] || headers["authorization"];
 		// Bearer ${token} or undefined
 
-		if(authorization?.include("Bearer") ||
-		   authorization?.include("bearer")
+		if(authorization?.includes("Bearer") ||
+		   authorization?.includes("bearer")
 		) {
 			if (typeof authorization === "string") {
 				const bearers = authorization.split(" ");
