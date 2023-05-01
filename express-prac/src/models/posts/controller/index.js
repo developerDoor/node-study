@@ -14,8 +14,8 @@ class PostController {
 	}
 	init(){
 		this.router.post('/', this.createPost.bind(this))
-		this.router.post('/comment', this.createComment.bind(this))
-		this.router.post('/child-comment', this.createChildComment.bind(this))
+		this.router.post('/comments', this.createComment.bind(this))
+		this.router.post('/child-comments', this.createChildComment.bind(this))
 	}
 
 	async createPost(req, res, next) {
